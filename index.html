@@ -1,139 +1,168 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="mn">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CV Template</title>
+  <title>CV — Tabs</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #fff;
-    }
-
-    .container {
-      display: grid;
-      grid-template-columns: 1fr 2fr;
-      min-height: 100vh;
-    }
-
-    /* Left side */
-    .left {
-      background: #5d8a8c;
-      color: white;
-      padding: 30px 20px;
-    }
-
-    .profile-img {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      object-fit: cover;
-      display: block;
-      margin: 0 auto 20px;
-      border: 4px solid white;
-    }
-
-    .left h2 {
-      margin-bottom: 10px;
-    }
-
-    .left p {
-      font-size: 14px;
-      line-height: 1.5;
-    }
-
-    .contact {
-      margin-top: 30px;
-      font-size: 14px;
-    }
-
-    .contact p {
-      margin: 8px 0;
-    }
-
-    /* Right side */
-    .right {
+    body { 
+      font-family: Arial, sans-serif; 
+      background: #f0f4f8;
       padding: 30px;
+      transition: background 0.5s ease;
     }
 
-    .name {
-      font-size: 28px;
-      font-weight: bold;
+    h1 { color: #1e293b; }
+
+    .tab {
+      overflow: hidden;
+      border-bottom: 3px solid #ddd;
+      margin-bottom: 20px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
     }
 
-    .title {
+    .tab button {
+      background-color: #e2e8f0;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      padding: 12px 25px;
+      transition: all 0.3s ease;
       font-size: 16px;
-      color: #444;
-      margin-bottom: 30px;
+      border-radius: 8px 8px 0 0;
+      color: #1e293b;
     }
 
-    .section {
-      margin-bottom: 25px;
+    .tab button:hover {
+      background-color: #93c5fd;
+      color: white;
+      transform: translateY(-2px);
     }
 
-    .section h3 {
-      color: #5d8a8c;
-      margin-bottom: 8px;
-      font-size: 18px;
-    }
-
-    .section p {
-      margin: 5px 0;
-      font-size: 14px;
-    }
-
-    .highlight {
+    .tab button.active {
+      background-color: #2563eb;
+      color: white;
       font-weight: bold;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      transform: translateY(-2px);
     }
+
+    .tabcontent {
+      display: none;
+      background: white;
+      padding: 25px;
+      border-radius: 0 12px 12px 12px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+      animation: fadeIn 0.4s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+
+    ul { padding-left: 20px; }
+    a { color: #2563eb; text-decoration: none; }
+    a:hover { text-decoration: underline; }
   </style>
 </head>
 <body>
-  <div class="container">
-    <!-- Left column -->
-    <div class="left">
-      <img src="your-photo.jpg" alt="Profile Photo" class="profile-img">
-      <h2>About Me</h2>
-      <p>
-       Миний нэрийг Отгонбаярын Билгүүн гэдэг. Би МУИС-ийн "Электроникийн инженерчлэл"-ийн 2-р түвшний оюутан. Схем зохиомж, embedded systems, circuit design зэрэгт суралцаж байгаа. Шинэ зүйл турших сонирхолтой, багийн ажиллагаанд идэвхтэй оролцдог.. <br>
-      </p>
 
-      <div class="contact">
-        <h2>Contact Me</h2>
-        <p>📧 o.bilguun1356@gmail.com </p>
-        <p>🔗 github.com/Bilguun1136 </p>
+  <h1>Bilguun Otgonbayr — CV</h1>
+
+  <!-- TAB BUTTONS -->
+  <div class="tab">
+    <button class="tablinks" onclick="openTab(event, 'about', '#dbeafe')" id="defaultOpen">About Me</button>
+    <button class="tablinks" onclick="openTab(event, 'education', '#bfdbfe')">Education</button>
+    <button class="tablinks" onclick="openTab(event, 'family', '#93c5fd')">Family</button>
+    <button class="tablinks" onclick="openTab(event, 'hobbies', '#60a5fa')">Hobbies</button>
+    <button class="tablinks" onclick="openTab(event, 'contact', '#93d7ff')">Contact</button>
+  </div>
+
+  <!-- TAB CONTENT -->
+  <div id="about" class="tabcontent">
+    <h3>About Me</h3>
+    <p>Миний нэрийг О. Билгүүн гэдэг. Би 19 настай ба Монгол Улсын Их Сургуулийн "Электроникийн инженерчлэл" хөтөлбөрийн 2-р түвшний оюутан. 
+    Одоогоор схем зохиомж, embedded systems, circuit design зэрэгт суралцаж байгаа. Шинэ зүйл турших сонирхолтой, нийтэч, багаар хамтарч ажиллахдаа сайн мөн аливаад амархан дасан зохицдог.</p>
+  </div>
+
+  <div id="education" class="tabcontent">
+    <h3>Education</h3>
+
+    <!-- Ахлах сургууль -->
+    <div style="display:flex; align-items:center; justify-content:space-between; margin-top:15px; background:#e2e8f0; padding:15px; border-radius:12px; flex-wrap:wrap;">
+      <div style="flex:1; min-width:200px;">
+        <p><strong>Увс, Өмнөговь 1-р сургууль</strong></p>
+        <p>2012 – 2024</p>
+        <p>Ахлах сургууль</p>
+      </div>
+      <div style="display:flex; gap:10px; flex-shrink:0;">
+        <img src="https://scontent.fuln1-1.fna.fbcdn.net/v/t1.15752-9/552077237_819274667313088_1538543572761509389_n.jpg?stp=dst-jpg_s480x480_tt6&_nc_cat=111&ccb=1-7&_nc_sid=0024fc&_nc_ohc=92C0fON9c-MQ7kNvwGFoDoe&_nc_oc=AdmsjzuN8n7LiQB1PmlF2k9iuV90y8eDQlLt4YDGN7Vr-ykREHHixvDqKhH9v4x0OTo&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.fuln1-1.fna&oh=03_Q7cD3gFqmmL11KpEgnY19FzbGkA7--0o9U1mO7nVcPPYYJeg3A&oe=6906D2D6" 
+             alt="Ахлах сургууль" 
+             style="width:350px; height:250px; border-radius:12px;">
+        <img src="https://scontent.fuln1-1.fna.fbcdn.net/v/t1.15752-9/552213002_1767456543895302_3957897684987098212_n.jpg?stp=dst-jpg_s480x480_tt6&_nc_cat=109&ccb=1-7&_nc_sid=0024fc&_nc_ohc=5acDN1OsRWwQ7kNvwF5pQ4b&_nc_oc=Adk75nnI-Qzl9t0Zt7oTcRU15PBOd16j-cd2deWDqYg5OlbNZ4YgKTBpLby1r8uUxnk&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.fuln1-1.fna&oh=03_Q7cD3gHxFNlvroOEswrdoBKT_BgjKzz-7mUkMaLWkajWcXrdlA&oe=6906BAE4" 
+             alt="Ахлах сургууль" 
+             style="width:350px; height:250px; border-radius:12px;">
       </div>
     </div>
 
-    <!-- Right column -->
-    <div class="right">
-      <div class="name">О. Билгүүн </div>
-      <div class="title">Student</div>
-
-      <div class="section">
-        <h3>Education</h3>
-        <p><span class="highlight">Увс, Өмнөговь 1-р сургууль</span> <br> 2012 – 2024</p>
-        <p><span class="highlight">Монгол Улсын Их Сургууль</span> <br> "Электроникийн инженерчлэл"</p>
-      </div>
-<!-- Hobbies & Interests -->
-<div class="section" style="margin-top:20px;">
-  <h3>Hobbies & Interests</h3>
-  <ul style="padding-left:18px; line-height:1.6;">
-    <li>   Playing volleyball</li>
-    <li>   Listening to music</li>
-    <li>   Reading books</li>
-  </ul>
-<img src="https://images.nbcolympics.com/sites/default/files/2021-04/Volleyball_Basics.jpg" alt="Hobbies" style="width:220px; border-radius:12px; margin-top:10px; border:2px solid #ccc;">
-<img src="https://simibest.sg/wp-content/uploads/2023/02/11-7.jpg" alt="Hobbies" style="width:220px; border-radius:12px; margin-top:10px; border:2px solid #ccc;">
-</div>
-      <div class="section">
-        <h3>Language</h3>
-        <p>Native Mongolia </p>
-        <p>Intermediate English</p>
-      </div>
-      </div>
+    <!-- Их сургууль -->
+    <div style="margin-top:15px; background:#bfdbfe; padding:15px; border-radius:12px;">
+      <p><strong>МУИС</strong></p>
+      <p>2024</p>
+      <p>Электроникийн инженерчлэл</p>
     </div>
   </div>
+
+  <div id="family" class="tabcontent">
+    <h3>Family</h3>
+    <p>Манайх ам бүл 6лаа амьдардаг. Манай аавыг З. Отгонбаяр гэдэг. Манай ээжийг Г. Батцэцэг гэдэг. Би доороо 2 эрэгтэй, 1 эмэгтэй дүүтэй. Бид хамтдаа халуун дулаан уур амьсгалтай, аз жаргалтай гэр бүл байхыг хичээж эрхэмлэдэг.</p>
+    <img src="https://scontent.fuln1-1.fna.fbcdn.net/v/t1.15752-9/553215757_2213251389189078_7944003636836216322_n.jpg?stp=dst-jpg_s480x480_tt6&_nc_cat=101&ccb=1-7&_nc_sid=0024fc&_nc_ohc=0Lb_KSeISqwQ7kNvwH_knnJ&_nc_oc=AdnfZmmr0SxqNetElygVv03ZPyoIco5DTl1x1t7uhKkv091olkiYyJFRCNCtOh8FQkc&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.fuln1-1.fna&oh=03_Q7cD3gF2nbIep7pJFpfT9fx3zZmCgmibwzXqJGkLWxdcXX51aw&oe=6906C643" 
+         alt="Family photo" 
+         style="width:400px; border-radius:12px; margin-top:15px; display:block; margin-left:auto; margin-right:auto;">
+  </div>
+
+  <div id="hobbies" class="tabcontent">
+    <h3>Hobbies & Interests</h3>
+    <ul>
+      <li>Volleyball тоглох</li>
+      <li>Хөгжим сонсох</li>
+      <li>Ном унших</li>
+    </ul>
+    <img src="https://images.nbcolympics.com/sites/default/files/2021-04/Volleyball_Basics.jpg" 
+         alt="Volleyball" style="width:300px; border-radius:12px; margin-top:15px;">
+    <img src="https://simibest.sg/wp-content/uploads/2023/02/11-7.jpg" 
+         alt="Other Hobby" style="width:300px; border-radius:12px; margin-top:15px; border:2px solid #ccc;">
+  </div>
+
+  <div id="contact" class="tabcontent">
+    <h3>Холбоо барих</h3>
+    <p><strong>Утас:</strong> 96939900</p>
+    <p><strong>Имэйл:</strong> bilguun1356@gmail.com</p>
+    <p><strong>Facebook:</strong> <a href="https://www.facebook.com/share/1BHhk7d1o4/?mibextid=wwXIfr" target="_blank">facebook.com/bilguun</a></p>
+  </div>
+
+  <script>
+    function openTab(evt, tabName, bgColor) {
+      const tabcontent = document.getElementsByClassName("tabcontent");
+      for (let i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+      }
+
+      const tablinks = document.getElementsByClassName("tablinks");
+      for (let i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+      }
+
+      document.getElementById(tabName).style.display = "block";
+      evt.currentTarget.className += " active";
+      document.body.style.background = bgColor;
+    }
+
+    // Default нээлттэй tab
+    document.getElementById("defaultOpen").click();
+  </script>
+
 </body>
 </html>
